@@ -1,0 +1,68 @@
+mysql> create database student_management
+    ->
+    ->
+    ->
+    ->
+    -> create database student_management_system;
+
+mysql> show databases;
++---------------------------+
+| Database                  |
++---------------------------+
+| ecommerce                 |
+| information_schema        |
+| mysql                     |
+| performance_schema        |
+| sakila                    |
+| student_management_system |
+| sys                       |
+| world                     |
++---------------------------+
+8 rows in set (0.00 sec)
+
+mysql> use student_management_system;
+Database changed
+mysql> create table student(student_id varchar(10) not null primary key,student_name varchar(10)not null,age int not null,phone_no varchar(10)not null);
+Query OK, 0 rows affected (0.04 sec)
+
+mysql> show tables;;
++-------------------------------------+
+| Tables_in_student_management_system |
++-------------------------------------+
+| student                             |
++-------------------------------------+
+1 row in set (0.00 sec)
+
+mysql> show tables;
++-------------------------------------+
+| Tables_in_student_management_system |
++-------------------------------------+
+| student                             |
++-------------------------------------+
+1 row in set (0.00 sec)
+
+mysql> desc student;
++--------------+-------------+------+-----+---------+-------+
+| Field        | Type        | Null | Key | Default | Extra |
++--------------+-------------+------+-----+---------+-------+
+| student_id   | varchar(10) | NO   | PRI | NULL    |       |
+| student_name | varchar(10) | NO   |     | NULL    |       |
+| age          | int         | NO   |     | NULL    |       |
+| phone_no     | varchar(10) | NO   |     | NULL    |       |
++--------------+-------------+------+-----+---------+-------+
+4 rows in set (0.00 sec)
+
+mysql>  create table feedback(feedback_id varchar(5) not null primary key, student_id varchar(10) not null, date date not null, instructor_name varchar(20) not null, feedback varchar(50) not null, foreign key (student_id) references student (student_id));
+Query OK, 0 rows affected (0.06 sec)
+
+mysql> desc feedback;
++-----------------+-------------+------+-----+---------+-------+
+| Field           | Type        | Null | Key | Default | Extra |
++-----------------+-------------+------+-----+---------+-------+
+| feedback_id     | varchar(5)  | NO   | PRI | NULL    |       |
+| student_id      | varchar(10) | NO   | MUL | NULL    |       |
+| date            | date        | NO   |     | NULL    |       |
+| instructor_name | varchar(20) | NO   |     | NULL    |       |
+| feedback        | varchar(50) | NO   |     | NULL    |       |
++-----------------+-------------+------+-----+---------+-------+
+5 rows in set (0.00 sec)
